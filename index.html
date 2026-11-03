@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>你的消费人格是什么？</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 背景装饰 -->
+  <div class="bg-decor">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="app">
+
+    <!-- ========== 首页 ========== -->
+    <section class="screen screen-home active" id="screen-home">
+      <div class="hero">
+        <div class="hero-emoji">🛍️💸🎁</div>
+        <h1 class="hero-title">你的消费人格<br/>是什么？</h1>
+        <p class="hero-sub">20 道题 · 测出你的专属消费性格</p>
+      </div>
+
+      <div class="marquee-card">
+        <div class="marquee-title">🔥 16 种消费人格，你是哪一种？</div>
+        <div class="marquee-scroll" id="marquee-list"></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-num">128,436</div><div class="stat-label">人已测</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="stat-num">16</div><div class="stat-label">种人格</div></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><div class="stat-num">20</div><div class="stat-label">道趣味题</div></div>
+      </div>
+
+      <button class="btn btn-primary btn-start" onclick="startQuiz()">开始测试 →</button>
+      <p class="footer-tip">测试结果仅供娱乐，理性消费，快乐生活 💕</p>
+    </section>
+
+    <!-- ========== 答题页 ========== -->
+    <section class="screen screen-quiz" id="screen-quiz">
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-inner" id="progress-inner"></div></div>
+        <div class="progress-text" id="progress-text">1 / 20</div>
+      </div>
+
+      <div class="card question-card">
+        <span class="q-dimension" id="q-dimension"></span>
+        <h2 class="q-title" id="q-title"></h2>
+        <div class="options" id="options"></div>
+      </div>
+
+      <div class="quiz-bottom">
+        <button class="btn btn-ghost" id="btn-back" onclick="prevQuestion()" style="display:none">上一题</button>
+        <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()" disabled>下一题 →</button>
+      </div>
+    </section>
+
+    <!-- ========== 结果页 ========== -->
+    <section class="screen screen-result" id="screen-result">
+      <div class="persona-card" id="persona-card">
+        <div class="persona-emoji" id="p-emoji"></div>
+        <div class="persona-code" id="p-code"></div>
+        <div class="persona-name" id="p-name"></div>
+        <div class="persona-tagline" id="p-tagline"></div>
+        <div class="tags" id="p-tags"></div>
+      </div>
+
+      <div class="card advice-card">
+        <div class="section-title">🌱 一句避坑建议</div>
+        <div class="advice-text" id="p-advice"></div>
+      </div>
+
+      <button class="btn btn-primary" onclick="goDeepReport()">📊 查看深度报告</button>
+
+      <div class="result-actions">
+        <button class="btn btn-ghost" onclick="shareResult()">分享结果</button>
+        <button class="btn btn-ghost" onclick="retry()">再测一次</button>
+      </div>
+    </section>
+
+    <!-- ========== 深度报告页 ========== -->
+    <section class="screen screen-deep" id="screen-deep">
+      <div class="report-head">
+        <div class="rh-emoji" id="rh-emoji"></div>
+        <div class="rh-code" id="rh-code"></div>
+        <div class="rh-name" id="rh-name"></div>
+        <div class="rh-sub">专属消费性格深度报告</div>
+      </div>
+
+      <div class="card section" id="note-section" style="display:none">
+        <div class="section-title">🎯 你的答题画像</div>
+        <div class="section-text" id="rh-note"></div>
+      </div>
+
+      <div class="card section">
+        <div class="section-title">📝 人格概览</div>
+        <div class="section-text" id="rh-overview"></div>
+      </div>
+      <div class="card section">
+        <div class="section-title">✨ 消费优势</div>
+        <div class="list" id="rh-strengths"></div>
+      </div>
+      <div class="card section">
+        <div class="section-title">⚠️ 需要注意</div>
+        <div class="list" id="rh-weaknesses"></div>
+      </div>
+      <div class="card section">
+        <div class="section-title">🛡️ 避坑建议</div>
+        <div class="list" id="rh-advice"></div>
+      </div>
+      <div class="card section">
+        <div class="section-title">💰 理财建议</div>
+        <div class="list" id="rh-financial"></div>
+      </div>
+
+      <div class="report-footer">
+        <button class="btn btn-ghost" onclick="shareResult()">分享报告</button>
+        <button class="btn btn-ghost" onclick="backToResult()">返回结果</button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
